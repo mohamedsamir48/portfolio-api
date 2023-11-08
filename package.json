@@ -4,7 +4,7 @@
   "description": "portfoilo server",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node app.js"
   },
   "author": "mohamed samir",
   "license": "ISC",

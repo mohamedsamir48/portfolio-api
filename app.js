@@ -92,6 +92,6 @@ app.use(
   async (req, res) => await res.status(200).json(online ? online : false)
 );
 
-server.listen(3001, () => {
+server.listen(5001, () => {
   console.log('server is running');
 });
