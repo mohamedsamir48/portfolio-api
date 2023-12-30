@@ -1,2 +1,2 @@
 # portfolio-api
-portfolio api for chat
+portfolio api for chat in portfolio
