@@ -2,15 +2,6 @@ const express = require('express');
 const app = express();
 const http = require('http');
 const { Server } = require('socket.io');
-// const mongoose = require('mongoose');
-// var MongoClient = require('mongodb').MongoClient;
-// var url = 'mongodb://localhost:27017/mydb';
-
-// MongoClient.connect(url, function (err, db) {
-//   if (err) throw err;
-//   console.log('Database created!');
-//   db.close();
-// });
 
 let connectedUser = 0;
 const cors = require('cors');
@@ -19,9 +10,7 @@ let online = false;
 app.use(cors());
 
 const server = http.createServer(app);
-// mongoose.connect('mongodb://localhost:27017', () => {
-//   console.log('db is connected');
-// });
+
 const io = new Server(server, {
   cors: {
     origin: '*',
@@ -31,14 +20,11 @@ const io = new Server(server, {
 
 io.on('connection', (socket) => {
   connectedUser += 1;
-  // console.log(`User ${connectedUser}`);
 
   socket.on('client', (data) => {
     socket.broadcast.emit(data.to, { ...data, state: 'received' });
-    // console.log(data);
   });
   socket.on('online', (data) => {
-    // cosnole.log(data);
     if (data.text == 'are you on') {
       socket.broadcast.emit('server', {
         text: 'are you on',
@@ -87,10 +73,6 @@ io.on('connection', (socket) => {
     online = false;
   });
 });
-app.use(
-  '/online',
-  async (req, res) => await res.status(200).json(online ? online : false)
-);
 
 server.listen(5001, () => {
   console.log('server is running');

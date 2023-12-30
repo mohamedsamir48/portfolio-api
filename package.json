@@ -1,7 +1,7 @@
 {
   "name": "portfoilo",
   "version": "1.0.0",
-  "description": "portfoilo server",
+  "description": "portfoilo api",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
